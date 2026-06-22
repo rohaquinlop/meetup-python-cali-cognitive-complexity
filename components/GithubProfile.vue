@@ -8,6 +8,7 @@
         <span class="name">Robin Quintero</span>
         <span class="handle">rohaquinlop</span>
         <span class="position">Software Engineer II @ GenLogs</span>
+<span class="speaking">Python Cali 2024 · PyCon Colombia 2025</span>
       </div>
 
       <!-- Right: Projects -->

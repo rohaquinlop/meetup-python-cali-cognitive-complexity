@@ -44,6 +44,11 @@
   color: #8b949e;
   font-size: 0.78rem;
 }
+.speaking {
+  color: #484f58;
+  font-size: 0.68rem;
+  margin-top: 2px;
+}
 .repo-card {
   background: #161b22;
   border: 1px solid #30363d;
