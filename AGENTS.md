@@ -1,6 +1,8 @@
 # Slidev Presentation — Agent Reference
 
 > Cognitive Complexity & `complexipy` — Python Cali Meetup
+>
+> **Language:** All slide content is written in **Spanish**.
 
 ## Project Context
 
