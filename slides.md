@@ -18,13 +18,9 @@ cómo medir código difícil de entender usando complexipy
 </div>
 
 ---
+layout: default
+---
 
-# About me
+# Sobre mí
 
-Robin Hafid Quintero Lopez
-
-<div class="abs-br m-6 text-xl">
-  <a href="https://github.com/rohaquinlop/complexipy" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
-</div>
+<GithubProfile />

@@ -1,0 +1,71 @@
+.github-card {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 18px;
+  color: #c9d1d9;
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.card-split {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.profile-panel {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 8px;
+}
+.projects-panel {
+  flex: 1;
+  min-width: 0;
+}
+.avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 3px solid #30363d;
+  margin-bottom: 12px;
+}
+.name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e6edf3;
+}
+.handle {
+  font-size: 1rem;
+  color: #8b949e;
+  margin-bottom: 6px;
+}
+.position {
+  color: #8b949e;
+  font-size: 0.78rem;
+}
+.repo-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+.repo-name {
+  color: #58a6ff;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.repo-desc {
+  color: #8b949e;
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+.lang-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.row { display: flex; flex-direction: row; }
+.col { display: flex; flex-direction: column; }
+.muted { color: #8b949e; }
