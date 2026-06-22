@@ -10,11 +10,24 @@ This is a **Slidev** presentation for a talk about cognitive complexity and the 
 
 **Package manager:** Bun (`bun.lock` present)  
 **Slidev version:** `@slidev/cli ^52.16.0`  
-**Theme:** `seriph` (serif fonts: PT Serif / PT Mono)  
+**Theme:** `apple-basic`  
 **Main file:** `slides.md` (all slides live here or in imported sub-files)  
 **Dev command:** `bun run dev`  
 **Build command:** `bun run build`  
 **Export command:** `bun run export` (PDF/PNG/PPTX)
+
+## External Source Dependencies
+
+### complexipy Library
+
+- **Source root:** `/Users/rhafid/opensource-projects/complexipy`
+- **Cognitive Complexity algorithm:** `/Users/rhafid/opensource-projects/complexipy/src/cognitive_complexity.rs`
+
+> **IMPORTANT:** Whenever writing about `complexipy` or the cognitive complexity algorithm, you MUST first read and validate the actual source code to ensure correctness. Do not rely on assumptions or general knowledge — verify the implementation details by inspecting the Rust source file at the path above. This applies to:
+> - How `complexipy` computes cognitive complexity scores
+> - The algorithm's rules (nesting increments, structural penalties, etc.)
+> - How the library exposes its API and integrates with Python
+> - Any claims about specific code examples and their resulting complexity values
 
 ## Directory Structure
 
@@ -56,23 +69,20 @@ This is a **Slidev** presentation for a talk about cognitive complexity and the 
 **Global (top of slides.md):**
 ```yaml
 ---
-theme: seriph
-background: https://cover.sli.dev
-title: Cognitive Complexity & complexipy
-info: |
-  ## Talk description (markdown enabled)
-class: text-center
+theme: apple-basic
+title: Cognitive Complexity en Python
+titleTemplate: '%s - Python Cali'
+author: Robin Hafid Quintero Lopez
+transition: slide-left
+layout: intro
 drawings:
   persist: false
-transition: slide-left
 comark: true
 duration: 35min
 magicMoveDuration: 800    # ms, default 800
 magicMoveCopy: 'final'    # true | false | 'always' | 'final'
 highlighter: shiki
 mdc: true
-titleTemplate: '%s - Python Cali'
-author: Robin Hafid
 ---
 ```
 
