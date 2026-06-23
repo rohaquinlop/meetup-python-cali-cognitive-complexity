@@ -42,7 +42,7 @@ layout: default
 
 # Misma CC, Diferente CogC
 
-<div class="mt-2 mb-3 text-sm" style="color: #8b949e;">
+<div class="mt-2 mb-3 text-sm" style="color: var(--text-muted);">
 
 Ambas tienen <strong>CC = 5</strong>, pero la complejidad cognitiva es completamente distinta
 
@@ -132,7 +132,7 @@ def process_orders(orders: list) -> int:
 
 </div>
 
-<div v-click class="mt-3 text-sm" style="color: #58a6ff;">
+<div v-click class="mt-3 text-sm" style="color: var(--accent-blue);">
 
 <strong>8 vs 2</strong> &mdash; misma cantidad de caminos, diferencia de 4× en complejidad cognitiva.<br/>
 Los <code>if</code> anidados penalizan, <code>match</code> con patrones no tiene costo estructural.
@@ -145,7 +145,7 @@ layout: default
 
 # ¿Por qué importa?
 
-<div class="mt-2 mb-4 text-sm" style="color: #8b949e;">
+<div class="mt-2 mb-4 text-sm" style="color: var(--text-muted);">
 
 La complejidad cognitiva tiene consecuencias reales en el día a día
 
@@ -156,27 +156,27 @@ La complejidad cognitiva tiene consecuencias reales en el día a día
 <div style="position: relative;">
 
 <div v-click="[1, 2]" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; display: flex; justify-content: center;">
-<div style="background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 18px 24px; text-align: center; max-width: 380px; overflow: hidden;">
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3Roa3RvNXA5MGZkb3kxbmZtYzBlMXFqM2d0c216bGRpZzZsNmR3OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FaFu1s2hO1xYHdpk6N/giphy.gif" style="width: 100%; height: 140px; object-fit: contain; border-radius: 14px; margin-bottom: 12px;" />
-<div style="color: #e6edf3; font-weight: 600; font-size: 1.1rem; margin-bottom: 6px;">Más bugs</div>
-<div style="color: #8b949e; font-size: 0.78rem; line-height: 1.4;">Código difícil de razonar = más errores al modificarlo o extenderlo</div>
-</div>
+<GiphyCard
+  image="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3Roa3RvNXA5MGZkb3kxbmZtYzBlMXFqM2d0c216bGRpZzZsNmR3OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FaFu1s2hO1xYHdpk6N/giphy.gif"
+  title="Más bugs"
+  description="Código difícil de razonar = más errores al modificarlo o extenderlo"
+/>
 </div>
 
 <div v-click="[2, 3]" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; display: flex; justify-content: center;">
-<div style="background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 18px 24px; text-align: center; max-width: 380px; overflow: hidden;">
-<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamh0MnN5aHoyaHY3Mzg3NnF6Y2IxMGJ4Yml1dm9xZWZwdGFjOWh4ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1xkMJIvxeKiDS/giphy.gif" style="width: 100%; height: 140px; object-fit: contain; border-radius: 14px; margin-bottom: 12px;" />
-<div style="color: #e6edf3; font-weight: 600; font-size: 1.1rem; margin-bottom: 6px;">Revisiones más lentas</div>
-<div style="color: #8b949e; font-size: 0.78rem; line-height: 1.4;">Un PR con CogC alto toma más tiempo de revisar y aprobar</div>
-</div>
+<GiphyCard
+  image="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamh0MnN5aHoyaHY3Mzg3NnF6Y2IxMGJ4Yml1dm9xZWZwdGFjOWh4ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1xkMJIvxeKiDS/giphy.gif"
+  title="Revisiones más lentas"
+  description="Un PR con CogC alto toma más tiempo de revisar y aprobar"
+/>
 </div>
 
 <div v-click="[3, 4]" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; display: flex; justify-content: center;">
-<div style="background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 18px 24px; text-align: center; max-width: 380px; overflow: hidden;">
-<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExODZ4ZXBhc2kzam4xaWozN3k0c2h3enI0bnJqOTloNHptYTJsZzliOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ad91OoLyqki6f0ICEe/giphy.gif" style="width: 100%; height: 140px; object-fit: contain; border-radius: 14px; margin-bottom: 12px;" />
-<div style="color: #e6edf3; font-weight: 600; font-size: 1.1rem; margin-bottom: 6px;">Onboarding difícil</div>
-<div style="color: #8b949e; font-size: 0.78rem; line-height: 1.4;">Nuevos desarrolladores tardan más en entender código complejo</div>
-</div>
+<GiphyCard
+  image="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExODZ4ZXBhc2kzam4xaWozN3k0c2h3enI0bnJqOTloNHptYTJsZzliOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ad91OoLyqki6f0ICEe/giphy.gif"
+  title="Onboarding difícil"
+  description="Nuevos desarrolladores tardan más en entender código complejo"
+/>
 </div>
 
 </div>
@@ -185,29 +185,38 @@ La complejidad cognitiva tiene consecuencias reales en el día a día
 
 <div v-click="4" style="display: flex; gap: 14px; margin-bottom: 16px;">
 
-<div style="flex: 1; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px 14px; text-align: center; overflow: hidden;">
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3Roa3RvNXA5MGZkb3kxbmZtYzBlMXFqM2d0c216bGRpZzZsNmR3OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FaFu1s2hO1xYHdpk6N/giphy.gif" style="width: 100%; height: 140px; object-fit: contain; border-radius: 14px; margin-bottom: 10px;" />
-<div style="color: #e6edf3; font-weight: 600; font-size: 1rem; margin-bottom: 6px;">Más bugs</div>
-<div style="color: #8b949e; font-size: 0.76rem; line-height: 1.4;">Código difícil de razonar = más errores al modificarlo o extenderlo</div>
+<div style="flex: 1;">
+<GiphyCard
+  compact
+  image="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3Roa3RvNXA5MGZkb3kxbmZtYzBlMXFqM2d0c216bGRpZzZsNmR3OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FaFu1s2hO1xYHdpk6N/giphy.gif"
+  title="Más bugs"
+  description="Código difícil de razonar = más errores al modificarlo o extenderlo"
+/>
 </div>
 
-<div style="flex: 1; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px 14px; text-align: center; overflow: hidden;">
-<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamh0MnN5aHoyaHY3Mzg3NnF6Y2IxMGJ4Yml1dm9xZWZwdGFjOWh4ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1xkMJIvxeKiDS/giphy.gif" style="width: 100%; height: 140px; object-fit: contain; border-radius: 14px; margin-bottom: 10px;" />
-<div style="color: #e6edf3; font-weight: 600; font-size: 1rem; margin-bottom: 6px;">Revisiones más lentas</div>
-<div style="color: #8b949e; font-size: 0.76rem; line-height: 1.4;">Un PR con CogC alto toma más tiempo de revisar y aprobar</div>
+<div style="flex: 1;">
+<GiphyCard
+  compact
+  image="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamh0MnN5aHoyaHY3Mzg3NnF6Y2IxMGJ4Yml1dm9xZWZwdGFjOWh4ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1xkMJIvxeKiDS/giphy.gif"
+  title="Revisiones más lentas"
+  description="Un PR con CogC alto toma más tiempo de revisar y aprobar"
+/>
 </div>
 
-<div style="flex: 1; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px 14px; text-align: center; overflow: hidden;">
-<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExODZ4ZXBhc2kzam4xaWozN3k0c2h3enI0bnJqOTloNHptYTJsZzliOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ad91OoLyqki6f0ICEe/giphy.gif" style="width: 100%; height: 140px; object-fit: contain; border-radius: 14px; margin-bottom: 10px;" />
-<div style="color: #e6edf3; font-weight: 600; font-size: 1rem; margin-bottom: 6px;">Onboarding difícil</div>
-<div style="color: #8b949e; font-size: 0.76rem; line-height: 1.4;">Nuevos desarrolladores tardan más en entender código complejo</div>
+<div style="flex: 1;">
+<GiphyCard
+  compact
+  image="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExODZ4ZXBhc2kzam4xaWozN3k0c2h3enI0bnJqOTloNHptYTJsZzliOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ad91OoLyqki6f0ICEe/giphy.gif"
+  title="Onboarding difícil"
+  description="Nuevos desarrolladores tardan más en entender código complejo"
+/>
 </div>
 
 </div>
 
-<div v-click="4" class="text-sm" style="color: #58a6ff; text-align: center;">
+<div v-click="4" class="text-sm" style="color: var(--accent-blue); text-align: center;">
 
-<strong>Medir la complejidad no es para juzgar — es para mejorar.</strong><br/>
+<strong>Medir la complejidad no es para juzgar, es para mejorar.</strong><br/>
 Saber <em>qué</em> hace el código difícil de leer nos ayuda a escribir mejor.
 
 </div>
@@ -216,38 +225,38 @@ Saber <em>qué</em> hace el código difícil de leer nos ayuda a escribir mejor.
 layout: default
 ---
 
-# ¿Cómo se mide?
+# Las 3 reglas de la complejidad cognitiva
 
-<div class="mt-2 mb-4 text-sm" style="color: #8b949e;">
-
-La complejidad cognitiva se calcula analizando el AST del código
-
+<div class="mt-2 mb-4 text-sm" style="color: var(--text-muted);">
+La complejidad cognitiva se calcula con 3 componentes
 </div>
 
-<div style="display: flex; gap: 12px; margin-bottom: 12px;">
+<div style="display: flex; gap: 12px; margin-bottom: 14px;">
 
-<div style="flex: 1; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px 14px;">
-<div style="color: #f85149; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px;">+ Estructuras de control</div>
-<div style="color: #c9d1d9; font-size: 0.78rem; line-height: 1.5;">
-<code style="color: #58a6ff;">if</code> <code style="color: #58a6ff;">elif</code> <code style="color: #58a6ff;">else</code> · <strong>+1</strong> cada uno<br/>
-<code style="color: #58a6ff;">for</code> <code style="color: #58a6ff;">while</code> · <strong>+1</strong> cada uno<br/>
-<code style="color: #58a6ff;">except</code> · <strong>+1</strong> por handler
+<div v-click style="flex: 1; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 14px; min-height: 140px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.85rem; margin-bottom: 8px;">Regla #1, Estructuras de control</div>
+<div style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.5;">
+<code style="color: var(--accent-blue);">if</code> <code style="color: var(--accent-blue);">elif</code> <code style="color: var(--accent-blue);">else</code> · <strong>+1</strong> cada uno<br/>
+<code style="color: var(--accent-blue);">for</code> <code style="color: var(--accent-blue);">while</code> · <strong>+1</strong> cada uno<br/>
+<code style="color: var(--accent-blue);">except</code> · <strong>+1</strong> por handler
 </div>
 </div>
 
-<div style="flex: 1; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px 14px;">
-<div style="color: #f85149; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px;">+ Anidación</div>
-<div style="color: #c9d1d9; font-size: 0.78rem; line-height: 1.5;">
+<div v-click style="flex: 1; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 14px; min-height: 140px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.85rem; margin-bottom: 8px;">Regla #2, Anidación</div>
+<div style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.5;">
 Cada nivel de anidación<br/>
-<strong>+1 extra</strong> por nivel<br/><br/>
-<span style="color: #8b949e;">nivel 0 → +0<br/>nivel 1 → +1<br/>nivel 2 → +2</span>
+<strong>+1 extra</strong> por nivel
 </div>
+<pre style="background: var(--bg-code); border: 1px solid var(--border-dark); border-radius: 6px; padding: 8px 12px; margin-top: 10px; font-family: monospace; font-size: 0.7rem; line-height: 1.6; color: var(--text-secondary);"><span style="color: var(--accent-keyword);">for</span> ...:          <span style="color: var(--text-muted);"># nivel 0 → +1</span>
+    <span style="color: var(--accent-keyword);">if</span> ...:       <span style="color: var(--text-muted);"># nivel 1 → +2</span>
+        <span style="color: var(--accent-keyword);">for</span> ...:  <span style="color: var(--text-muted);"># nivel 2 → +3</span></pre>
 </div>
 
-<div style="flex: 1; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px 14px;">
-<div style="color: #f85149; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px;">+ Booleanos</div>
-<div style="color: #c9d1d9; font-size: 0.78rem; line-height: 1.5;">
-<code style="color: #58a6ff;">and</code> <code style="color: #58a6ff;">or</code> · <strong>+1</strong> por operador<br/>
+<div v-click style="flex: 1; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 16px 14px; min-height: 140px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.85rem; margin-bottom: 8px;">Regla #3, Booleanos</div>
+<div style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.5;">
+<code style="color: var(--accent-blue);">and</code> <code style="color: var(--accent-blue);">or</code> · <strong>+1</strong> por operador<br/>
 Cambiar <code>and</code> ↔ <code>or</code><br/>
 <strong>+1 extra</strong> por cambio
 </div>
@@ -255,39 +264,56 @@ Cambiar <code>and</code> ↔ <code>or</code><br/>
 
 </div>
 
-<div v-click style="display: flex; gap: 12px;">
-
-<div style="flex: 1; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px 14px;">
-<div style="color: #3fb950; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px;">✓ No suma</div>
-<div style="color: #c9d1d9; font-size: 0.78rem; line-height: 1.5;">
-<code style="color: #58a6ff;">match</code> / <code style="color: #58a6ff;">case</code><br/>
-Comentarios y docstrings<br/>
-Declaraciones, asignaciones
+<div v-click style="background: var(--bg-card); border: 1px solid var(--border-green); border-radius: 8px; padding: 16px 14px; margin-bottom: 14px;">
+<div style="color: var(--accent-green); font-weight: 600; font-size: 0.82rem; margin-bottom: 4px;">✓ Lo que NO suma complejidad</div>
+<div style="color: var(--text-muted); font-size: 0.76rem;">
+<code style="color: var(--accent-blue);">match/case</code> · <code style="color: var(--accent-blue);">break</code> · <code style="color: var(--accent-blue);">continue</code> · <code style="color: var(--accent-blue);">return</code> · <code style="color: var(--accent-blue);">with</code> · <code style="color: var(--accent-blue);">try</code> · funciones anidadas · comentarios → 0 puntos de complejidad
 </div>
 </div>
 
-<div style="flex: 1; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px 14px;">
-<div style="color: #3fb950; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px;">✓ No suma</div>
-<div style="color: #c9d1d9; font-size: 0.78rem; line-height: 1.5;">
-<code style="color: #58a6ff;">break</code> <code style="color: #58a6ff;">continue</code><br/>
-<code style="color: #58a6ff;">return</code> temprano<br/>
-<code style="color: #58a6ff;">for...else</code> <code style="color: #58a6ff;">try...else</code>
-</div>
-</div>
+---
+layout: default
+---
 
-<div style="flex: 1; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px 14px;">
-<div style="color: #3fb950; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px;">✓ No suma</div>
-<div style="color: #c9d1d9; font-size: 0.78rem; line-height: 1.5;">
-<code style="color: #58a6ff;">with</code> (solo nesting)<br/>
-<code style="color: #58a6ff;">try</code> (solo nesting)<br/>
-Funciones anidadas
-</div>
+# La fórmula en acción
+
+<div class="mt-2 mb-4 text-sm" style="color: var(--text-muted);">
+Cada estructura suma: 1 + nivel de anidación + operadores booleanos
 </div>
 
+<div style="display: flex; gap: 16px;">
+
+<div style="flex: 1; min-width: 0;">
+
+```python
+def check_nested(items):       # CogC = 6
+    for item in items:         # 1 + 0 = 1
+        if item.active:        # 1 + 1 = 2
+            if item.age:       # 1 + 2 = 3
+                return True
+    return False
+```
+
 </div>
 
-<div v-click class="mt-5 text-sm" style="color: #58a6ff; text-align: center;">
+<div style="flex: 1; min-width: 0;">
 
-<strong>Fórmula:</strong> complejidad = 1 (estructural) + N (nivel de anidación) + B (operadores booleanos)
+```python
+def check_flat(items):         # CogC = 4
+    for item in items:         # 1 + 0 = 1
+        if item.active and item.age:  # 1 + 1 + 1 = 3
+            return True
+    return False
+```
 
+</div>
+
+</div>
+
+<div v-click class="mt-4 text-sm" style="color: var(--accent-yellow); text-align: center;">
+<strong>Fórmula:</strong> complejidad = 1 (estructural) + N (anidación) + B (booleanos), por cada estructura
+</div>
+
+<div v-click class="mt-3 text-sm" style="color: var(--text-muted); text-align: center;">
+6 vs 4, misma lógica, 33% menos complejidad cognitiva. El <code>and</code> aplana la anidación y reduce el costo.
 </div>
