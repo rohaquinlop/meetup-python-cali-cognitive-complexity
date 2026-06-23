@@ -16,8 +16,8 @@
 
         <!-- Pinned repos -->
         <div class="row" style="align-items: center; gap: 6px; margin-bottom: 8px;">
-          <span style="width: 8px; height: 8px; border-radius: 50%; background: #e6edf3; display: inline-block;"></span>
-          <span style="color: #e6edf3; font-weight: 600; font-size: 0.82rem;">Destacados</span>
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--text-primary); display: inline-block;"></span>
+          <span style="color: var(--text-primary); font-weight: 600; font-size: 0.82rem;">Destacados</span>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
@@ -30,7 +30,7 @@
             <div class="repo-desc" style="margin-bottom: 5px;">Blazingly fast cognitive complexity analysis for Python, written in Rust</div>
             <div class="row muted" style="align-items: center; font-size: 0.68rem;">
               <span class="row" style="align-items: center; gap: 4px;">
-                <span class="lang-dot" style="background: #3572A5;"></span> Python
+                <span class="lang-dot" style="background: var(--lang-python);"></span> Python
               </span>
             </div>
           </div>
@@ -43,7 +43,7 @@
             <div class="repo-desc" style="margin-bottom: 5px;">Python library for simulating &amp; visualizing finite automata</div>
             <div class="row muted" style="align-items: center; font-size: 0.68rem;">
               <span class="row" style="align-items: center; gap: 4px;">
-                <span class="lang-dot" style="background: #3572A5;"></span> Python
+                <span class="lang-dot" style="background: var(--lang-python);"></span> Python
               </span>
             </div>
           </div>
@@ -56,7 +56,7 @@
             <div class="repo-desc" style="margin-bottom: 5px;">Minimal, high-performance Python helpers for concurrent S3 transfers</div>
             <div class="row muted" style="align-items: center; font-size: 0.68rem;">
               <span class="row" style="align-items: center; gap: 4px;">
-                <span class="lang-dot" style="background: #3572A5;"></span> Python
+                <span class="lang-dot" style="background: var(--lang-python);"></span> Python
               </span>
             </div>
           </div>
@@ -69,7 +69,7 @@
             <div class="repo-desc" style="margin-bottom: 5px;">Parallel iterators for Python 3.14+</div>
             <div class="row muted" style="align-items: center; font-size: 0.68rem;">
               <span class="row" style="align-items: center; gap: 4px;">
-                <span class="lang-dot" style="background: #3572A5;"></span> Python
+                <span class="lang-dot" style="background: var(--lang-python);"></span> Python
               </span>
             </div>
           </div>
@@ -77,20 +77,20 @@
         </div>
 
         <!-- Contributions -->
-        <div style="border-top: 1px solid #21262d; padding-top: 10px;">
+        <div style="border-top: 1px solid var(--border-dark); padding-top: 10px;">
           <div class="row" style="align-items: center; gap: 6px; margin-bottom: 6px;">
-            <span style="width: 8px; height: 8px; border-radius: 50%; background: #e6edf3; display: inline-block;"></span>
-            <span style="color: #e6edf3; font-weight: 600; font-size: 0.82rem;">Contribuciones a otros proyectos</span>
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--text-primary); display: inline-block;"></span>
+            <span style="color: var(--text-primary); font-weight: 600; font-size: 0.82rem;">Contribuciones a otros proyectos</span>
           </div>
           <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-            <span style="background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 4px 10px; font-size: 0.7rem; color: #c9d1d9;">
-              <span style="color: #58a6ff;">rust-lang/rust</span> &nbsp;·&nbsp; 2 PRs merged
+            <span style="background: var(--bg-code); border: 1px solid var(--border-default); border-radius: 6px; padding: 4px 10px; font-size: 0.7rem; color: var(--text-secondary);">
+              <span style="color: var(--accent-blue);">rust-lang/rust</span> &nbsp;·&nbsp; 2 PRs merged
             </span>
-            <span style="background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 4px 10px; font-size: 0.7rem; color: #c9d1d9;">
-              <span style="color: #58a6ff;">fluidattacks/makes</span> &nbsp;·&nbsp; ex‑maintainer
+            <span style="background: var(--bg-code); border: 1px solid var(--border-default); border-radius: 6px; padding: 4px 10px; font-size: 0.7rem; color: var(--text-secondary);">
+              <span style="color: var(--accent-blue);">fluidattacks/makes</span> &nbsp;·&nbsp; ex‑maintainer
             </span>
-            <span style="background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 4px 10px; font-size: 0.7rem; color: #c9d1d9;">
-              <span style="color: #58a6ff;">cattle-ops/terraform-aws-gitlab-runner</span> &nbsp;·&nbsp; PR merged
+            <span style="background: var(--bg-code); border: 1px solid var(--border-default); border-radius: 6px; padding: 4px 10px; font-size: 0.7rem; color: var(--text-secondary);">
+              <span style="color: var(--accent-blue);">cattle-ops/terraform-aws-gitlab-runner</span> &nbsp;·&nbsp; PR merged
             </span>
           </div>
         </div>
