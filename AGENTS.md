@@ -11,8 +11,9 @@ This is a **Slidev** presentation for a talk about cognitive complexity and the 
 **Package manager:** Bun (`bun.lock` present)  
 **Slidev version:** `@slidev/cli ^52.16.0`  
 **Theme:** `apple-basic`  
-**Main file:** `slides.md` (all slides live here or in imported sub-files)  
-**Dev command:** `bun run dev`  
+**Main file:** `slides.md` (all slides live here or in imported sub-files)
+**Design guide:** `DESIGN.md` — color palette, card styling, typography, animation rules (MUST read before creating/editing slides)
+**Dev command:** `bun run dev`
 **Build command:** `bun run build`  
 **Export command:** `bun run export` (PDF/PNG/PPTX)
 
