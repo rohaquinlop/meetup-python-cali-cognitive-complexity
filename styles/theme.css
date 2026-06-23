@@ -1,0 +1,25 @@
+:root {
+  /* Backgrounds */
+  --bg-card: #0d1117;
+  --bg-code: #161b22;
+
+  /* Borders */
+  --border-default: #30363d;
+  --border-dark: #21262d;
+  --border-green: #1a4731;
+
+  /* Text */
+  --text-primary: #e6edf3;
+  --text-secondary: #c9d1d9;
+  --text-muted: #8b949e;
+  --text-very-muted: #6e7681;
+  --text-subtle: #484f58;
+
+  /* Accents */
+  --accent-blue: #58a6ff;
+  --accent-red: #f85149;
+  --accent-green: #3fb950;
+  --accent-yellow: #d29922;
+  --accent-keyword: #ff7b72;
+  --lang-python: #3572A5;
+}
