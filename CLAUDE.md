@@ -42,11 +42,14 @@ Never use a color token for multiple semantic meanings. This is the #1 cause of 
 | Token | ONLY for | NEVER for |
 |-------|----------|-----------|
 | `--accent-blue` | Inline code references (`<code style="color: var(--accent-blue);">if</code>`) | Card headings, callout text, conclusions, titles |
-| `--text-primary` | Body text, **all card headings** (white, `font-weight: 700`) | Code references, takeaways |
-| `--accent-yellow` | Formula results, key takeaways at the bottom of slides | Code, card headings, body text |
-| `--accent-green` | Exception/positive markers (green headings, green borders) | Regular content, penalties |
-| `--accent-red` | Penalty/cost markers (higher complexity patterns, warning borders) | Informational content, exceptions |
+| `--text-primary` | Body text, **all card headings** (white, `font-weight: 700`) | Code references |
+| `--accent-yellow` | **Formula expressions only** (`B = 1 + transiciones`) | Slide takeaways, code, card headings, body text |
+| `--accent-teal` | Signature/brand: cover mark, `title-tick`, the `<CogCVersus>` device chrome, insight pull-quotes and transition callouts | Code, body paragraphs, card backgrounds |
+| `--accent-green` | Exception/positive markers (green headings, green borders) + low-complexity hero numbers | Regular content, penalties |
+| `--accent-red` | Penalty/cost markers (warning borders) + high-complexity hero numbers | Informational content, exceptions |
 | `--accent-keyword` | Syntax highlighting inside code blocks ONLY | Card headings, UI elements, text outside `<pre>`/code |
+
+**Slide endings must vary** (the #1 AI-template tell): rotate the `<CogCVersus>` device, a white typographic line, a teal pull-quote, a teal inline line, or no closer. Never end every slide with the same centered amber takeaway. See `DESIGN.md`.
 
 ### Layout Rules
 

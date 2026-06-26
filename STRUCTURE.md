@@ -27,7 +27,7 @@
 | 10 | ¿Por qué switch es más barato? | ✅ DONE | **Paper integration.** Two-column comparison: match/case (green border, **un solo +1** para todo el bloque) vs if/elif (red border, +1 per branch = 3). Matches the paper's `getWords` switch = 1. The point: switch pays one increment regardless of how many cases. |
 | 11 | ¿Por qué penalizar el anidamiento? | ✅ DONE | **Paper integration.** Campbell quote about linear vs nested being easier regardless of execution paths. Two code blocks: linear (CogC=5) vs nested (CogC=11) with same 5 execution paths. Key: "el anidamiento multiplica el costo." |
 | 12 | La fórmula en acción | ✅ DONE | Two side-by-side examples: `check_nested` (CogC=6) vs `check_flat` (CogC=4). Annotated with per-line breakdowns. Formula: "1 (estructural) + N (anidación) + B (booleanos)". Footer note about fundamental increments (C). |
-| 13 | 6 vs 4. Misma lógica. 33% menos. | ✅ DONE | Breathing statement slide (statement layout). No cards, no code. Lets the audience absorb the formula-in-action takeaway. |
+| 13 | Misma lógica. (6 → 4) | ✅ DONE | Breathing statement slide (statement layout). Hero `<CogCVersus :a="6" :b="4" big>` device with the `−33%` pill, plus the `title-tick` brand mark. The signature visual moment of the deck. |
 | 14 | Decoradores Python, La excepción especial | ✅ DONE | **Paper integration.** Campbell Appendix A quote about decorator pattern. Code example showing `complexipy` ignores the outer function, sets inner nesting to 0. v-click takeaway: "El decorador es patrón estructural, no lógica." |
 | 15 | Decorador, una excepción estrecha | ✅ DONE | **Paper integration.** Side-by-side, same wrapper logic: no califica (un statement extra hace que la función anidada suba el nivel, CogC=2) vs califica como decorador (CogC=1). Mirrors the paper's `a_decorator`/`not_a_decorator` examples (Apéndice A). Both values verified on complexipy 5.6.1. |
 | 16 | ~~Introduciendo complexipy~~ | ❌ TODO | *(Planned: Tool intro — not yet created)* |
@@ -54,6 +54,19 @@
 - **Current coverage:** Title → Concept → Ignorar atajos → CogC vs CC demo → Why it matters → Rules → 4 types of increment → Boolean sequences → Why switch is cheaper → Why penalize nesting → Formula in action → Breathing statement → Decorator exception
 
 ## Structural Notes
+
+### Visual Identity (personality pass)
+
+The deck was given a distinct visual identity to avoid the generic "AI template" feel:
+
+- **Type:** Space Grotesk (display/UI) + JetBrains Mono (code + hero numbers), set in the `slides.md` headmatter `fonts` block.
+- **Signature accent:** teal `--accent-teal` (#2dd4bf) for brand chrome, the `title-tick` mark, the `<CogCVersus>` device, and insight/transition callouts.
+- **Severity ramp:** the thesis made visual, low complexity cools (green), high burns (red). Used only on `<CogCVersus>` hero numbers via `--cogc-low/mid/high`.
+- **`<CogCVersus>` component:** the number contrast is now the hero device on slides 5 (8 vs 4), 11 (11 vs 5) and 13 (6 → 4), replacing the repeated amber takeaway lines.
+- **Rhythm:** the uniform "centered bold amber takeaway on every slide" was broken up, amber is now reserved for formulas only (slides 9, 12); other slides resolve with the device, a white typographic line, or a teal pull-quote.
+- **Craft fixes:** slide 11 nested code now uses real indentation (was faked with `→`); slide 5 columns equalised and `base = 1` noise removed; slide 7 banner de-densified; slide 8 badges adopt the teal signature.
+
+See `DESIGN.md` for the full token + component reference.
 
 ### Accuracy Audit (paper-aligned, not 5.6.1)
 
