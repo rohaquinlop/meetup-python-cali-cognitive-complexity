@@ -5,16 +5,24 @@ titleTemplate: '%s - Python Cali'
 author: Robin Hafid Quintero Lopez
 transition: slide-left
 layout: intro
+fonts:
+  sans: 'Space Grotesk'
+  mono: 'JetBrains Mono'
+  weights: '300,400,500,600,700'
+  italic: false
 ---
 
 # Cognitive Complexity en Python
 
-cómo medir código difícil de entender usando complexipy
+<div class="title-tick"></div>
 
-<div class="absolute bottom-10">
-    <span class="font-700">
-        Python Cali - Meetup Junio
-    </span>
+<div style="font-size: 1.05rem; color: var(--text-secondary);">
+cómo medir código difícil de entender con <span style="color: var(--accent-teal); font-weight: 600;">complexipy</span>
+</div>
+
+<div class="absolute bottom-10" style="display: flex; align-items: center; gap: 9px;">
+    <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent-teal); display: inline-block;"></span>
+    <span class="font-700">Python Cali, Meetup Junio</span>
 </div>
 
 ---
@@ -42,12 +50,14 @@ layout: center
 Una métrica propuesta por **G. Ann Campbell** (SonarSource) en 2017 que mide **qué tan difícil es entender** un fragmento de código
 
 
-<div class="text-center text-gray-500 mt-4">
+<div class="text-center mt-4" style="color: var(--text-muted);">
 A diferencia de la complejidad ciclomática, penaliza la <b>anidación</b> y los <b>quiebres estructurales</b>
 </div>
 
-<div v-click class="mt-3 text-sm" style="color: var(--accent-yellow);">
-Su primer principio: <strong>"Ignorar atajos"</strong>, las estructuras que permiten escribir múltiples declaraciones en una sola línea no suman complejidad.
+<div v-click class="mt-5" style="border-left: 3px solid var(--accent-teal); padding-left: 14px; text-align: left;">
+<div style="color: var(--text-secondary); font-size: 0.84rem; line-height: 1.5;">
+Su primer principio, <strong style="color: var(--text-primary);">"Ignorar atajos"</strong>: las estructuras que permiten escribir múltiples declaraciones en una sola línea no suman complejidad.
+</div>
 </div>
 
 ---
@@ -90,8 +100,10 @@ No rompen el flujo lineal. Los <code style="color: var(--accent-blue);">except</
 </div>
 </div>
 
-<div v-click class="mt-6 text-sm" style="color: var(--accent-yellow); text-align: center;">
-<strong>No es una lista arbitraria de excepciones. Es una filosofía: si puedes leerlo de un vistazo, no es complejo.</strong>
+<div v-click class="mt-6" style="text-align: center;">
+<div style="color: var(--text-primary); font-size: 0.98rem; font-weight: 500; line-height: 1.45;">
+No es una lista de excepciones, es una filosofía:<br/>si puedes leerlo de un vistazo, no es complejo.
+</div>
 </div>
 
 ---
@@ -114,17 +126,17 @@ Ambas tienen <strong>CC = 5</strong>, pero la complejidad cognitiva es completam
 ```python
 # CC = 5
 
-def sum_of_primes(max: int) -> int: # base = 1
+def sum_of_primes(max: int) -> int:
     total = 0
-    for i in range(1, max+1):    # +1
+    for i in range(1, max + 1):    # +1
         should_add = True
-        for j in range(2, i):    # +1
-            if i%j == 0:         # +1
+        for j in range(2, i):      # +1
+            if i % j == 0:         # +1
                 should_add = False
                 break
-        if should_add:           # +1
+        if should_add:             # +1
             total += i
-    return total                 # = 5
+    return total
 ```
 
 ```python
@@ -132,15 +144,15 @@ def sum_of_primes(max: int) -> int: # base = 1
 
 def sum_of_primes(max: int) -> int:
     total = 0
-    for i in range(1, max+1):    # +1 (nivel 0)
+    for i in range(1, max + 1):    # +1 (nivel 0)
         should_add = True
-        for j in range(2, i):    # +2 (nivel 1)
-            if i%j == 0:         # +3 (nivel 2)
+        for j in range(2, i):      # +2 (nivel 1)
+            if i % j == 0:         # +3 (nivel 2)
                 should_add = False
                 break
-        if should_add:           # +2 (nivel 1)
+        if should_add:             # +2 (nivel 1)
             total += i
-    return total                 # = 8
+    return total
 ```
 ````
 
@@ -152,19 +164,17 @@ def sum_of_primes(max: int) -> int:
 ```python
 # CC = 5
 
-def process_orders(orders: list) -> int: # base = 1
+def process_orders(orders: list) -> int:
     total = 0
-    for order in orders:                        # +1
+    for order in orders:               # +1
         match order.get('status'):
-            case 'completed' | 'pending':       # +1
+            case 'completed' | 'pending':   # +1
                 total += order['amount']
-            case 'cancelled' | 'returned':      # +1
+            case 'cancelled' | 'returned':  # +1
                 total -= order['amount']
-            case _:
-                pass
-    if total < 0:                               # +1
+    if total < 0:                      # +1
         total = 0
-    return total                                # = 5
+    return total
 ```
 
 ```python
@@ -172,17 +182,15 @@ def process_orders(orders: list) -> int: # base = 1
 
 def process_orders(orders: list) -> int:
     total = 0
-    for order in orders:                    # +1 (nivel 0)
-        match order.get('status'):          # +2 (nivel 1)
+    for order in orders:               # +1 (nivel 0)
+        match order.get('status'):     # +2 (nivel 1)
             case 'completed' | 'pending':
                 total += order['amount']
             case 'cancelled' | 'returned':
                 total -= order['amount']
-            case _:
-                pass
-    if total < 0:                           # +1 (nivel 0)
+    if total < 0:                      # +1 (nivel 0)
         total = 0
-    return total                            # = 4
+    return total
 ```
 ````
 
@@ -190,11 +198,12 @@ def process_orders(orders: list) -> int:
 
 </div>
 
-<div v-click class="mt-3 text-sm" style="color: var(--accent-yellow);">
-
-<strong>8 vs 4</strong>, misma cantidad de caminos, el doble de complejidad cognitiva.<br/>
-Los <code>if</code> anidados acumulan anidación, <code>match</code> cobra un solo incremento sin importar cuántos casos.
-
+<div v-click class="mt-4">
+<CogCVersus
+  :a="8" :b="4" mode="vs"
+  labelA="if anidados" labelB="match / case"
+  note="Misma cantidad de caminos (CC = 5), el doble de complejidad cognitiva. Los if anidados acumulan anidación; match cobra un solo incremento sin importar cuántos casos."
+/>
 </div>
 
 ---
@@ -272,11 +281,13 @@ La complejidad cognitiva tiene consecuencias reales en el día a día
 
 </div>
 
-<div v-click="4" class="text-sm" style="color: var(--accent-yellow); text-align: center;">
-
-<strong>Medir la complejidad no es para juzgar, es para mejorar.</strong><br/>
+<div v-click="4" style="text-align: center;">
+<div style="color: var(--text-primary); font-size: 0.96rem; font-weight: 500; line-height: 1.45;">
+Medir la complejidad no es para juzgar, es para mejorar.
+</div>
+<div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;">
 Saber <em>qué</em> hace el código difícil de leer nos ayuda a escribir mejor.
-
+</div>
 </div>
 
 ---
@@ -306,7 +317,7 @@ La complejidad cognitiva se calcula con 3 componentes
 Cada nivel de anidación<br/>
 <strong>+1 extra</strong> por nivel
 </div>
-<pre style="background: var(--bg-code); border: 1px solid var(--border-dark); border-radius: 6px; padding: 8px 12px; margin-top: 10px; font-family: monospace; font-size: 0.7rem; line-height: 1.6; color: var(--text-secondary);"><span style="color: var(--accent-keyword);">for</span> ...:          <span style="color: var(--text-muted);"># nivel 0 → +1</span>
+<pre style="background: var(--bg-code); border: 1px solid var(--border-dark); border-radius: 6px; padding: 8px 12px; margin-top: 10px; font-family: var(--slidev-font-mono), monospace; font-size: 0.7rem; line-height: 1.6; color: var(--text-secondary);"><span style="color: var(--accent-keyword);">for</span> ...:          <span style="color: var(--text-muted);"># nivel 0 → +1</span>
     <span style="color: var(--accent-keyword);">if</span> ...:       <span style="color: var(--text-muted);"># nivel 1 → +2</span>
         <span style="color: var(--accent-keyword);">for</span> ...:  <span style="color: var(--text-muted);"># nivel 2 → +3</span></pre>
 </div>
@@ -322,15 +333,12 @@ Cambiar <code>and</code> ↔ <code>or</code><br/>
 
 </div>
 
-<div v-click style="background: var(--bg-card); border: 1px solid var(--border-green); border-radius: 8px; padding: 16px 14px; margin-bottom: 14px;">
-<div style="color: var(--accent-green); font-weight: 600; font-size: 0.82rem; margin-bottom: 4px;">
+<div v-click style="background: var(--bg-card); border: 1px solid var(--border-green); border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
+<div style="color: var(--accent-green); font-weight: 600; font-size: 0.82rem; margin-bottom: 5px;">
   Lo que NO suma, "Ignorar atajos"
 </div>
 <div style="color: var(--text-muted); font-size: 0.76rem; line-height: 1.6;">
-  <code style="color: var(--accent-blue);">break</code>, <code style="color: var(--accent-blue);">continue</code>, <code style="color: var(--accent-blue);">return</code>, <code style="color: var(--accent-blue);">with</code>, <code style="color: var(--accent-blue);">try</code> / <code style="color: var(--accent-blue);">finally</code>, extraer funciones, comentarios, todos 0 puntos
-</div>
-<div style="color: var(--text-very-muted); font-size: 0.7rem; margin-top: 6px;">
-  ¿Por qué? Porque son legibles de un vistazo, el Principio #1. Ojo: <code style="color: var(--accent-blue);">match</code> sí suma +1.
+  <code style="color: var(--accent-blue);">break</code>, <code style="color: var(--accent-blue);">continue</code>, <code style="color: var(--accent-blue);">return</code>, <code style="color: var(--accent-blue);">with</code>, <code style="color: var(--accent-blue);">try</code> / <code style="color: var(--accent-blue);">finally</code>, extraer funciones, comentarios. Legibles de un vistazo, <strong style="color: var(--text-secondary);">0 puntos</strong>. Ojo: <code style="color: var(--accent-blue);">match</code> sí suma +1.
 </div>
 </div>
 
@@ -346,7 +354,7 @@ Cómo desglosar la fórmula en componentes precisos
 
 <div style="display: flex; flex-direction: column; gap: 8px;">
 <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px;">
-<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 5px; background: var(--border-default); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; color: var(--text-primary);">A</div>
+<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 6px; background: var(--accent-teal-dim); border: 1px solid var(--accent-teal); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.8rem; color: var(--accent-teal); font-family: 'JetBrains Mono', monospace;">A</div>
 <div>
 <div style="color: var(--text-primary); font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">Estructural</div>
 <div style="color: var(--text-muted); font-size: 0.72rem; line-height: 1.5;">
@@ -355,7 +363,7 @@ Cómo desglosar la fórmula en componentes precisos
 </div>
 </div>
 <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px;">
-<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 5px; background: var(--border-default); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; color: var(--text-primary);">B</div>
+<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 6px; background: var(--accent-teal-dim); border: 1px solid var(--accent-teal); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.8rem; color: var(--accent-teal); font-family: 'JetBrains Mono', monospace;">B</div>
 <div>
 <div style="color: var(--text-primary); font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">Anidación</div>
 <div style="color: var(--text-muted); font-size: 0.72rem; line-height: 1.5;">
@@ -364,7 +372,7 @@ Cuando A está dentro de otro A, +1 por cada nivel extra. El costo acumulativo.
 </div>
 </div>
 <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px;">
-<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 5px; background: var(--border-default); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; color: var(--text-primary);">C</div>
+<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 6px; background: var(--accent-teal-dim); border: 1px solid var(--accent-teal); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.8rem; color: var(--accent-teal); font-family: 'JetBrains Mono', monospace;">C</div>
 <div>
 <div style="color: var(--text-primary); font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">Fundamental</div>
 <div style="color: var(--text-muted); font-size: 0.72rem; line-height: 1.5;">
@@ -373,7 +381,7 @@ Secuencias booleanas, recursión, goto. No afectan el anidamiento pero sí la co
 </div>
 </div>
 <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px;">
-<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 5px; background: var(--border-default); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; color: var(--text-primary);">D</div>
+<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 6px; background: var(--accent-teal-dim); border: 1px solid var(--accent-teal); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.8rem; color: var(--accent-teal); font-family: 'JetBrains Mono', monospace;">D</div>
 <div>
 <div style="color: var(--text-primary); font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">Híbrido</div>
 <div style="color: var(--text-muted); font-size: 0.72rem; line-height: 1.5;">
@@ -420,7 +428,7 @@ resultado = a and b or c and d
 </div>
 </div>
 
-<div v-click class="mt-4" style="border-left: 3px solid var(--accent-blue); padding-left: 14px; background: none;">
+<div v-click class="mt-4" style="border-left: 3px solid var(--accent-teal); padding-left: 14px; background: none;">
 <div style="color: var(--text-muted); font-size: 0.76rem; line-height: 1.5;">
 Cada transición <code style="color: var(--accent-blue);">and</code> ↔ <code style="color: var(--accent-blue);">or</code> suma +1 extra. La idea: mezclar lógica en la misma línea confunde al lector.
 </div>
@@ -474,7 +482,9 @@ Cada rama puede comparar cualquier variable. Más carga cognitiva.
 </div>
 </div>
 
-<div v-click class="mt-3 text-sm" style="color: var(--accent-yellow); text-align: center;"><strong>match/case: un solo incremento para todo el bloque. if/elif: +1 por cada rama. El switch cobra una vez, sin importar cuántos casos.</strong></div>
+<div v-click class="mt-4" style="text-align: center; color: var(--text-secondary); font-size: 0.85rem;">
+El <span style="color: var(--accent-teal); font-weight: 600;">switch</span> cobra una vez, sin importar cuántos casos.
+</div>
 
 ---
 layout: default
@@ -486,7 +496,7 @@ layout: default
 La intuición detrás de la Regla #2
 </div>
 
-<div style="border-left: 3px solid var(--accent-blue); padding-left: 16px; margin-bottom: 16px;">
+<div style="border-left: 3px solid var(--accent-teal); padding-left: 16px; margin-bottom: 16px;">
 <div style="color: var(--text-muted); font-style: italic; font-size: 0.85rem; line-height: 1.5;">
 "Una serie lineal de cinco estructuras if y for sería más fácil de entender que esas mismas cinco estructuras anidadas, sin importar el número de rutas de ejecución."
 </div>
@@ -516,20 +526,24 @@ def process(items):
 ```python
 # Anidado, CogC = 11
 def process(items):
-    for i in items:       # +1
-      → for j in items:   # +2
-        → → if j.valid:   # +3
-          → → → if j.active:  # +4
+    for i in items:            # +1
+        for j in items:        # +2
+            if j.valid:        # +3
+                if j.active:   # +4
                     use(j)
-    if items:             # +1
+    if items:                  # +1
         init()
 ```
 
 </div>
 </div>
 
-<div v-click class="mt-3 text-sm" style="color: var(--accent-yellow); text-align: center;">
-<strong>5 caminos en ambos casos. Pero 11 vs 5: el anidamiento multiplica el costo.</strong>
+<div v-click class="mt-4">
+<CogCVersus
+  :a="11" :b="5" mode="vs"
+  labelA="anidado" labelB="lineal"
+  note="Cinco caminos en ambos casos. El anidamiento multiplica el costo: 11 contra 5."
+/>
 </div>
 
 ---
@@ -539,7 +553,7 @@ layout: default
 # La fórmula en acción
 
 <div class="mt-2 mb-4 text-sm" style="color: var(--text-muted);">
-Cada estructura suma: 1 + nivel de anidación + operadores booleanos
+Apliquemos la fórmula, línea por línea
 </div>
 
 <div style="display: flex; gap: 16px;">
@@ -583,11 +597,16 @@ def check_flat(items):         # CogC = 4
 layout: statement
 ---
 
-# 6 vs 4.
+# Misma lógica.
 
-<div class="mt-6 text-2xl" style="color: var(--text-muted);">
-Misma lógica. 33% menos complejidad cognitiva.
-</div>
+<div class="title-tick" style="margin: 16px auto 30px;"></div>
+
+<CogCVersus
+  :a="6" :b="4" mode="arrow"
+  labelA="check_nested" labelB="check_flat"
+  big
+  note="Una sola línea menos de anidación, un tercio menos de carga cognitiva."
+/>
 
 ---
 layout: default
@@ -617,8 +636,8 @@ def mi_decorador(arg):      # ← complexipy IGNORA esto
 
 </div>
 
-<div v-click class="mt-3 text-sm" style="color: var(--accent-yellow); text-align: center;">
-<strong>El decorador es patrón estructural, no lógica. No debería inflar la métrica.</strong>
+<div v-click class="mt-4" style="text-align: center; color: var(--text-secondary); font-size: 0.88rem;">
+El decorador es <span style="color: var(--accent-teal); font-weight: 600;">patrón estructural</span>, no lógica. No debería inflar la métrica.
 </div>
 
 ---
@@ -661,6 +680,8 @@ def log_calls(func):
 </div>
 </div>
 
-<div v-click class="mt-4 text-sm" style="color: var(--accent-yellow); text-align: center;">
-<strong>1 vs 2: solo una función anidada y un return califican. Un statement extra y el wrapper sube el nivel de anidación.</strong>
+<div v-click class="mt-4" style="border-left: 3px solid var(--accent-teal); padding-left: 14px;">
+<div style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.5;">
+El mismo <code style="color: var(--accent-blue);">if</code>, el mismo wrapper. El score cambia solo porque una de las dos pierde la excepción del decorador.
+</div>
 </div>
