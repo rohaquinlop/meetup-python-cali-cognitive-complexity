@@ -30,6 +30,56 @@ This is a **Slidev** presentation for a talk about cognitive complexity and the 
 > - How the library exposes its API and integrates with Python
 > - Any claims about specific code examples and their resulting complexity values
 
+## Design Rules
+
+> These rules are MANDATORY for every slide. Violations make the presentation look AI-generated and inconsistent.
+> Before creating or editing ANY slide, also read `DESIGN.md` (complete style guide).
+
+### Color System: 1 Token = 1 Purpose
+
+Never use a color token for multiple semantic meanings. This is the #1 cause of "AI template" feel.
+
+| Token | ONLY for | NEVER for |
+|-------|----------|-----------|
+| `--accent-blue` | Inline code references (`<code style="color: var(--accent-blue);">if</code>`) | Card headings, callout text, conclusions, titles |
+| `--text-primary` | Body text, **all card headings** (white, `font-weight: 700`) | Code references, takeaways |
+| `--accent-yellow` | Formula results, key takeaways at the bottom of slides | Code, card headings, body text |
+| `--accent-green` | Exception/positive markers (green headings, green borders) | Regular content, penalties |
+| `--accent-red` | Penalty/cost markers (higher complexity patterns, warning borders) | Informational content, exceptions |
+| `--accent-keyword` | Syntax highlighting inside code blocks ONLY | Card headings, UI elements, text outside `<pre>`/code |
+
+### Layout Rules
+
+**Card headings:** Always `color: var(--text-primary); font-weight: 700`. Never colored. This matches the rule cards on slide "Las 3 reglas".
+
+**Card grid trap:** Never use a 2×2 colored grid (4 cards, 4 different accent colors). This is the #1 AI-template giveaway. Use a vertical list with letter/number badges instead.
+
+**Quote variety:** Campbell quotes must vary visually — never repeat the same blockquote card style:
+- 1st appearance: Full card blockquote (intro)
+- 2nd appearance: Left-border pull-quote (no card background, just `border-left: 3px solid var(--accent-blue)`)
+- 3rd appearance: Inline italic text, no container
+
+**Breathing slides:** After every 3-4 content-heavy slides, insert a statement slide:
+```markdown
+---
+layout: statement
+---
+
+# Key takeaway here.
+```
+No cards, no code, no grids. Let the audience absorb.
+
+**Slide density:** A slide should have at most 3 visual elements (cards, code blocks, callouts). If a slide has 4+ layers, split it.
+
+**After/before code:** Side-by-side two-column layout (`display: flex; gap: 16px`). Never vertical stacked before/after with v-click.
+
+### Content Rules
+
+- **Spanish:** No em dashes (`—`), no double hyphens (`--`). Use commas (`,`) for all separators in prose.
+- **No emojis** in slides. Use GIFs for visual elements.
+- **Author attribution:** G. Ann Campbell, SonarSource (2017). Must be credited on the cognitive complexity definition slide.
+- **Cognitive complexity scores:** ALWAYS validate against the actual `complexipy` Rust source before claiming any score. Run `uv run complexipy` on the example code and confirm the output.
+
 ## Directory Structure
 
 ```

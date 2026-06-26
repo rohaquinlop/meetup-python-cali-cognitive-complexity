@@ -33,7 +33,8 @@ All colors are CSS custom properties defined in `style.css` (project root, auto-
 ### Accents
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--accent-blue` | `#58a6ff` | Code references, links, formula highlights |
+| `--accent-blue` | `#58a6ff` | Inline code references (`<code>`) only |
+| `--accent-red` | `#f85149` | Penalty/cost markers (higher complexity patterns) |
 | `--accent-green` | `#3fb950` | "No suma" / positive / exception markers |
 | `--accent-yellow` | `#d29922` | Formula results, key takeaways |
 | `--accent-keyword` | `#ff7b72` | Syntax-highlighted keywords (for, if, while) |
@@ -74,7 +75,7 @@ padding: 16px 14px;
 
 - **Titles**: Use `# Título` Markdown. No emojis. Use commas (`,`) not middle dots (`·`) in prose.
 - **Subtitles**: `<div class="mt-2 mb-4 text-sm" style="color: var(--text-muted);">`
-- **Callouts/takeaways**: `<div v-click class="mt-3 text-sm" style="color: var(--accent-blue);">`
+- **Callouts/takeaways**: `<div v-click class="mt-3 text-sm" style="color: var(--accent-yellow);">`
 - **Formula results**: `color: var(--accent-yellow)`
 
 ---
