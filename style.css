@@ -22,4 +22,33 @@
   --accent-yellow: #d29922;
   --accent-keyword: #ff7b72;
   --lang-python: #3572A5;
+
+  /* Signature brand accent (cover, section chrome, the "vs" device housing) */
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: #134e4a;
+
+  /* Complexity severity ramp, used ONLY on hero numbers */
+  --cogc-low: #3fb950;   /* CogC <= 5  */
+  --cogc-mid: #d29922;   /* CogC 6-10  */
+  --cogc-high: #f85149;  /* CogC >= 11 */
+}
+
+/* ---- Typographic personality ------------------------------------------- */
+/* Display headings: Space Grotesk, tightened tracking. apple-basic sets its
+   own heading font, so target it explicitly to win specificity. */
+.slidev-layout h1,
+.slidev-layout h2 {
+  font-family: 'Space Grotesk', var(--slidev-font-sans), sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Brand tick: a short teal rule that sits under a slide title. Add the class
+   `title-tick` to an element right after an <h1> to print the signature mark. */
+.title-tick {
+  width: 38px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--accent-teal);
+  margin: 0 0 14px 2px;
 }
