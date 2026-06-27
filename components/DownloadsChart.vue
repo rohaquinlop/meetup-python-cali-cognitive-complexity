@@ -39,8 +39,8 @@ const nx = xx(nowIdx), ny = yy(data[nowIdx].v)
       <!-- Mar 2024 marker -->
       <circle :cx="mx" :cy="my" r="4" fill="var(--bg-card)"
               stroke="var(--text-muted)" stroke-width="2" />
-      <text :x="mx + 8" :y="my - 10" class="dl-tag dl-tag--muted">Marzo 2024</text>
-      <text :x="mx + 8" :y="my + 4" class="dl-val dl-val--muted">5.8k / semana</text>
+      <text :x="mx + 8" :y="my - 24" class="dl-tag dl-tag--muted">Marzo 2024</text>
+      <text :x="mx + 8" :y="my - 10" class="dl-val dl-val--muted">5.8k / semana</text>
 
       <!-- Jun 2026 marker -->
       <circle :cx="nx" :cy="ny" r="9" fill="var(--accent-teal)" opacity="0.18" />
