@@ -1201,3 +1201,30 @@ Descargas semanales en PyPI, desde aquella primera charla hasta hoy
 <div style="color: var(--text-muted); font-size: 0.72rem;">por semana hoy</div>
 </div>
 </div>
+
+---
+layout: center
+class: text-center
+---
+
+# ¡Gracias!
+
+<div class="title-tick" style="margin: 16px auto 26px;"></div>
+
+<div style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 30px;">
+Mide la complejidad, quita la anidación, deja que tu código se entienda a la primera.
+</div>
+
+<div style="display: inline-grid; grid-template-columns: auto auto; gap: 8px 16px; text-align: left; font-family: var(--slidev-font-mono), monospace; font-size: 0.92rem; align-items: baseline;">
+<span style="color: var(--text-muted);">GitHub</span><span style="color: var(--accent-teal);">github.com/rohaquinlop/complexipy</span>
+<span style="color: var(--text-muted);">Docs</span><span style="color: var(--accent-teal);">rohaquinlop.github.io/complexipy</span>
+<span style="color: var(--text-muted);">PyPI</span><span style="color: var(--accent-teal);">pip install complexipy</span>
+</div>
+
+<div style="margin-top: 30px; color: var(--text-muted); font-size: 0.85rem;">
+Robin Hafid Quintero Lopez, <span style="color: var(--text-primary);">rohaquinlop</span>
+</div>
+
+<div style="margin-top: 6px; font-family: var(--slidev-font-mono), monospace; font-size: 0.85rem; color: var(--accent-teal);">
+linkedin.com/in/robin-hafid
+</div>
