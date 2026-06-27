@@ -658,7 +658,7 @@ La excepción se definió a propósito de forma estrecha, un statement de más y
 ```python
 def log_calls(func):
     contador = 0              # un statement extra
-    def wrapper(*args):       # nivel 1 (ya no es decorador)
+    def wrapper(*args):       # nivel 1 (no aplica)
         if args:              # +2 (1 + nivel 1)
             print("con args")
         return func(*args)
