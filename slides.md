@@ -3,6 +3,7 @@ theme: apple-basic
 title: Cognitive Complexity en Python
 titleTemplate: '%s - Python Cali'
 author: Robin Hafid Quintero Lopez
+colorSchema: dark
 transition: slide-left
 layout: intro
 fonts:
