@@ -951,6 +951,219 @@ Devuelve objetos con el detalle línea por línea, ideal para construir tus prop
 </div>
 
 ---
+layout: default
+---
+
+# Buenas prácticas
+
+<div class="mt-2 mb-5 text-sm" style="color: var(--text-muted);">
+Lo que de verdad mueve el número es quitar anidación, no acortar el código
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 9px; margin-bottom: 16px;">
+
+<div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 12px 16px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.82rem; margin-bottom: 3px;">Guard clauses, salir temprano</div>
+<div style="color: var(--text-muted); font-size: 0.74rem; line-height: 1.45;">Invierte la condición y retorna pronto. Cada nivel de anidación que eliminas baja el costo de todo lo que tenía dentro.</div>
+</div>
+
+<div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 12px 16px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.82rem; margin-bottom: 3px;">Comprehensions en vez de loops que solo acumulan</div>
+<div style="color: var(--text-muted); font-size: 0.74rem; line-height: 1.45;">Aplanan varios niveles en uno. Los <code style="color: var(--accent-blue);">and</code> cuestan +1 cada uno, sin penalización de anidamiento.</div>
+</div>
+
+<div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 12px 16px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.82rem; margin-bottom: 3px;"><code style="color: var(--accent-blue);">any()</code> / <code style="color: var(--accent-blue);">all()</code> en vez de bandera y <code style="color: var(--accent-blue);">break</code></div>
+<div style="color: var(--text-muted); font-size: 0.74rem; line-height: 1.45;">Expresan "existe" o "para todo" en una línea, sin la variable de estado ni el corte del bucle.</div>
+</div>
+
+<div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 12px 16px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.82rem; margin-bottom: 3px;">Extraer funciones con nombre</div>
+<div style="color: var(--text-muted); font-size: 0.74rem; line-height: 1.45;">La anidación interna de cada función se mide aparte, así que partir un bloque grande reparte la carga.</div>
+</div>
+
+</div>
+
+<div v-click style="border-left: 3px solid var(--accent-teal); padding-left: 14px;">
+<div style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.5;">
+Cuidado, renombrar sub-expresiones mejora la lectura, pero la gran reducción casi siempre viene de quitar anidación, no de renombrar.
+</div>
+</div>
+
+---
+layout: statement
+---
+
+# Refactoring en acción.
+
+<div class="title-tick" style="margin: 16px auto 24px;"></div>
+
+<div style="color: var(--text-secondary); font-size: 1.05rem;">
+El mismo comportamiento, mucha menos carga cognitiva.
+</div>
+
+---
+layout: default
+---
+
+# Condicionales anidados a guard clauses
+
+<div class="mt-2 mb-4 text-sm" style="color: var(--text-muted);">
+Cuatro <code style="color: var(--accent-blue);">if</code> anidados, cada nivel suma su profundidad al costo del siguiente
+</div>
+
+````md magic-move {lines: true}
+```python {*|3-8}
+# Antes
+def get_discount(user, cart):
+    if user is not None:
+        if user.is_active:
+            if cart.total > 100:
+                if user.is_premium:
+                    return 0.2
+                else:
+                    return 0.1
+    return 0.0
+```
+
+```python
+# Después
+def get_discount(user, cart):
+    if user is None or not user.is_active:
+        return 0.0
+    if cart.total <= 100:
+        return 0.0
+    return 0.2 if user.is_premium else 0.1
+```
+````
+
+<div v-click class="mt-4">
+<CogCVersus
+  :a="11" :b="4" mode="arrow"
+  labelA="anidado" labelB="guard clauses"
+  note="Quitar la anidación, no acortar el código, es lo que baja la métrica."
+/>
+</div>
+
+---
+layout: default
+---
+
+# Acumulación anidada a comprehension
+
+<div class="mt-2 mb-4 text-sm" style="color: var(--text-muted);">
+Tres niveles de <code style="color: var(--accent-blue);">if</code> dentro de un <code style="color: var(--accent-blue);">for</code>, solo para llenar una lista
+</div>
+
+````md magic-move {lines: true}
+```python {*|3-7}
+# Antes
+def active_premium_emails(users):
+    result = []
+    for u in users:
+        if u.is_active:
+            if u.is_premium:
+                if u.email:
+                    result.append(u.email.lower())
+    return result
+```
+
+```python
+# Después
+def active_premium_emails(users):
+    return [
+        u.email.lower()
+        for u in users
+        if u.is_active and u.is_premium and u.email
+    ]
+```
+````
+
+<div v-click class="mt-4">
+<CogCVersus
+  :a="10" :b="3" mode="arrow"
+  labelA="loop anidado" labelB="comprehension"
+  note="La comprehension aplana tres niveles a uno. Los and cuestan solo +1 cada uno."
+/>
+</div>
+
+---
+layout: default
+---
+
+# Bandera y break a any()
+
+<div class="mt-2 mb-4 text-sm" style="color: var(--text-muted);">
+Una variable de estado, un <code style="color: var(--accent-blue);">break</code> y dos niveles, para responder una sola pregunta
+</div>
+
+````md magic-move {lines: true}
+```python {*|3-8}
+# Antes
+def has_expired_item(items):
+    found = False
+    for item in items:
+        if item.status == "active":
+            if item.days_left < 0:
+                found = True
+                break
+    return found
+```
+
+```python
+# Después
+def has_expired_item(items):
+    return any(i.days_left < 0 for i in items if i.status == "active")
+```
+````
+
+<div v-click class="mt-4">
+<CogCVersus
+  :a="6" :b="2" mode="arrow"
+  labelA="bandera + break" labelB="any()"
+  note="any() y all() expresan existe o para todo, sin bandera, sin break, sin anidación."
+/>
+</div>
+
+---
+layout: default
+---
+
+# Resumen
+
+<div class="mt-2 mb-5 text-sm" style="color: var(--text-muted);">
+Cuatro ideas para llevarte a casa
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 11px; margin-bottom: 20px;">
+
+<div style="display: flex; gap: 14px; align-items: baseline;">
+<div style="color: var(--accent-teal); font-family: var(--slidev-font-mono), monospace; font-weight: 700; font-size: 0.9rem; min-width: 22px;">01</div>
+<div style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.45;">La complejidad cognitiva mide qué tan difícil es <strong style="color: var(--text-primary);">entender</strong> el código, no cuántos caminos tiene.</div>
+</div>
+
+<div style="display: flex; gap: 14px; align-items: baseline;">
+<div style="color: var(--accent-teal); font-family: var(--slidev-font-mono), monospace; font-weight: 700; font-size: 0.9rem; min-width: 22px;">02</div>
+<div style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.45;">La <strong style="color: var(--text-primary);">anidación</strong> es lo que más pesa, cada nivel añade un recargo a todo lo que tiene dentro.</div>
+</div>
+
+<div style="display: flex; gap: 14px; align-items: baseline;">
+<div style="color: var(--accent-teal); font-family: var(--slidev-font-mono), monospace; font-weight: 700; font-size: 0.9rem; min-width: 22px;">03</div>
+<div style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.45;"><strong style="color: var(--text-primary);">complexipy</strong> lo mide por ti, en la terminal, en el editor y en CI.</div>
+</div>
+
+<div style="display: flex; gap: 14px; align-items: baseline;">
+<div style="color: var(--accent-teal); font-family: var(--slidev-font-mono), monospace; font-weight: 700; font-size: 0.9rem; min-width: 22px;">04</div>
+<div style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.45;">Refactoriza para <strong style="color: var(--text-primary);">quitar anidación</strong>, no solo para acortar.</div>
+</div>
+
+</div>
+
+<div v-click style="color: var(--text-primary); font-weight: 500; font-size: 1rem;">
+Código simple no es código corto, es código que se entiende a la primera.
+</div>
+
+---
 layout: statement
 ---
 
