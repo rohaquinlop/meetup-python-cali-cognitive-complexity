@@ -47,15 +47,15 @@
 | 27 | Resumen | ✅ DONE | Default layout. Four numbered takeaways (teal `01-04` badges, white key terms): mide entendimiento, anidación es lo que más pesa, complexipy lo mide por ti, refactoriza para quitar anidación. White typographic closer: "Código simple no es código corto, es código que se entiende a la primera." |
 | 28 | Volvamos dos años atrás. | ✅ DONE | Breathing statement. Bridge into the closing growth story: "Marzo de 2024, la primera vez que hablé de complexipy aquí." `title-tick`. |
 | 29 | El mismo proyecto, dos años después | ✅ DONE | **Back to the past (closing crescendo).** `<DownloadsChart>` (custom SVG, 123 weekly PyPI points) annotated Marzo 2024 (5.8k/sem) → Junio 2026 (122k/sem). Stat trio: 21×, 2.83M acumuladas, 122k/sem. |
-| 30 | ~~¡Gracias!~~ | ❌ TODO | *(Planned: Q&A + links — goes AFTER the growth chart, still not created)* |
+| 30 | ¡Gracias! | ✅ DONE | **Closing.** `layout: center`. `title-tick`, one-line thesis recap, mono link grid (GitHub `rohaquinlop/complexipy`, docs `rohaquinlop.github.io/complexipy`, `pip install complexipy`) in teal, speaker line "Robin Quintero, rohaquinlop". |
 
 > **Ordering note:** the two growth-story slides (28-29) currently sit **physically last** in `slides.md`. They are intentionally the closing crescendo, right before Gracias. When the remaining technical TODO slides (buenas prácticas, refactoring Magic Move, resumen) are built, **insert them BEFORE the "Volvamos dos años atrás" statement**, not after it. Gracias goes after the growth chart.
 
 ## Summary
 
-- **Done:** 31 / 32 slides (the only remaining TODO is Gracias)
-- **Remaining:** 1 slide (gracias)
-- **Progress:** 97%
+- **Done:** 32 / 32 slides
+- **Remaining:** none, deck complete
+- **Progress:** 100%
 - **Current coverage:** Title → Concept → Ignorar atajos → CogC vs CC demo → Why it matters → Rules → 4 types of increment → Boolean sequences → Why switch is cheaper → Why penalize nesting → Formula in action → Breathing statement → Decorator exception → **Tool: intro + install → CLI basics → CI gate → refactor plans → tracking (snapshot/diff/ratchet) → integrations → Python API → buenas prácticas → refactoring en acción (Magic Move trio: 11→4, 10→3, 6→2) → resumen → "back to the past" downloads growth**
 
 ## complexipy facts (verified, v6.0.0)
