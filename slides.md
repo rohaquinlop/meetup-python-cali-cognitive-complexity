@@ -685,3 +685,306 @@ def log_calls(func):
 El mismo <code style="color: var(--accent-blue);">if</code>, el mismo wrapper. El score cambia solo porque una de las dos pierde la excepción del decorador.
 </div>
 </div>
+
+---
+layout: statement
+---
+
+# Ya sabemos qué medir.
+
+<div class="title-tick" style="margin: 16px auto 24px;"></div>
+
+<div style="color: var(--text-secondary); font-size: 1.05rem;">
+Ahora, ¿cómo lo medimos sin contar a mano?
+</div>
+
+---
+layout: default
+---
+
+# complexipy
+
+<div class="mt-2 mb-6 text-sm" style="color: var(--text-muted);">
+Análisis de complejidad cognitiva para Python, escrito en Rust
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 11px; margin-bottom: 22px;">
+
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<span style="flex-shrink: 0; width: 8px; height: 8px; border-radius: 2px; background: var(--accent-teal); margin-top: 6px;"></span>
+<div style="color: var(--text-secondary); font-size: 0.84rem; line-height: 1.5;">
+Implementa el paper de Campbell, los mismos incrementos que acabamos de ver.
+</div>
+</div>
+
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<span style="flex-shrink: 0; width: 8px; height: 8px; border-radius: 2px; background: var(--accent-teal); margin-top: 6px;"></span>
+<div style="color: var(--text-secondary); font-size: 0.84rem; line-height: 1.5;">
+El motor está en Rust, analiza miles de funciones en milisegundos.
+</div>
+</div>
+
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<span style="flex-shrink: 0; width: 8px; height: 8px; border-radius: 2px; background: var(--accent-teal); margin-top: 6px;"></span>
+<div style="color: var(--text-secondary); font-size: 0.84rem; line-height: 1.5;">
+Un score por función, listo para la terminal, el editor, pre-commit y CI.
+</div>
+</div>
+
+</div>
+
+```bash
+pip install complexipy
+# o con uv
+uv add complexipy
+```
+
+---
+layout: default
+---
+
+# Uso básico
+
+<div class="mt-2 mb-5 text-sm" style="color: var(--text-muted);">
+Apunta complexipy a un archivo, una carpeta o un repositorio de git
+</div>
+
+<pre style="background: var(--bg-code); border: 1px solid var(--border-dark); border-radius: 8px; padding: 18px 22px; font-family: var(--slidev-font-mono), monospace; font-size: 0.8rem; line-height: 1.6; color: var(--text-secondary); overflow-x: auto;"><span style="color: var(--text-very-muted);">$</span> <span style="color: var(--text-primary);">complexipy .</span>
+
+<span style="color: var(--text-very-muted);">──────────────── 🐙 complexipy ────────────────</span>
+orders.py
+    is_valid 1  ✅ <span style="color: var(--accent-green);">PASSED</span>
+    process_orders 9  ✅ <span style="color: var(--accent-green);">PASSED</span>
+
+<span style="color: var(--text-muted);">All functions are within the allowed complexity.</span>
+<span style="color: var(--text-very-muted);">──────────── 🎉 Analysis completed! 🎉 ────────────</span></pre>
+
+<div v-click class="mt-5" style="border-left: 3px solid var(--accent-teal); padding-left: 14px;">
+<div style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.5;">
+Sin configuración. El número junto a cada función es su complejidad cognitiva, el mismo que calculamos a mano.
+</div>
+</div>
+
+---
+layout: default
+---
+
+# El umbral, tu compuerta en CI
+
+<div class="mt-2 mb-5 text-sm" style="color: var(--text-muted);">
+Define un máximo por función con <code style="color: var(--accent-blue);">--max-complexity-allowed</code>, por defecto 15
+</div>
+
+<pre style="background: var(--bg-code); border: 1px solid var(--border-dark); border-radius: 8px; padding: 16px 22px; font-family: var(--slidev-font-mono), monospace; font-size: 0.78rem; line-height: 1.55; color: var(--text-secondary); overflow-x: auto;"><span style="color: var(--text-very-muted);">$</span> <span style="color: var(--text-primary);">complexipy . --max-complexity-allowed 5</span>
+
+<span style="color: var(--text-very-muted);">──────────────── 🐙 complexipy ────────────────</span>
+orders.py
+    is_valid 1  ✅ <span style="color: var(--accent-green);">PASSED</span>
+    process_orders 9  ❌ <span style="color: var(--accent-red);">FAILED</span>
+
+<span style="color: var(--text-muted);">Failed functions:</span>
+ <span style="color: var(--accent-red);">- orders.py: process_orders</span>
+<span style="color: var(--text-very-muted);">──────────── 🎉 Analysis completed! 🎉 ────────────</span>
+
+<span style="color: var(--text-very-muted);">$</span> <span style="color: var(--text-primary);">echo $?</span>
+<span style="color: var(--accent-red);">1</span></pre>
+
+<div v-click class="mt-4" style="text-align: center; color: var(--text-secondary); font-size: 0.86rem;">
+Ese <code style="color: var(--accent-blue);">exit 1</code> es lo que detiene el pipeline cuando una función se vuelve difícil de leer.
+</div>
+
+---
+layout: default
+---
+
+# No solo el número, también el plan
+
+<div class="mt-2 mb-5 text-sm" style="color: var(--text-muted);">
+<code style="color: var(--accent-blue);">--suggest-refactors</code> propone cómo bajar la complejidad
+</div>
+
+<pre style="background: var(--bg-code); border: 1px solid var(--border-dark); border-radius: 8px; padding: 14px 22px; font-family: var(--slidev-font-mono), monospace; font-size: 0.74rem; line-height: 1.5; color: var(--text-secondary); overflow-x: auto;"><span style="color: var(--text-very-muted);">$</span> <span style="color: var(--text-primary);">complexipy . --suggest-refactors -mx 5</span>
+
+<span style="color: var(--text-very-muted);">──────────────── 🐙 complexipy ────────────────</span>
+orders.py
+    is_valid 1  ✅ <span style="color: var(--accent-green);">PASSED</span>
+    process_orders 9  ❌ <span style="color: var(--accent-red);">FAILED</span>
+
+      Refactor plans:
+        <span style="color: var(--text-primary);">1.</span> Extract complex block into helper function, lines 7-16
+           estimated: 9 -> 4 (<span style="color: var(--accent-green);">-5</span>)
+        <span style="color: var(--text-primary);">2.</span> Split conditional dispatcher into handlers, lines 9-16
+           estimated: 9 -> 7 (<span style="color: var(--accent-green);">-2</span>)
+<span style="color: var(--text-very-muted);">──────────── 🎉 Analysis completed! 🎉 ────────────</span></pre>
+
+<div v-click class="mt-4" style="text-align: center;">
+<div style="color: var(--text-primary); font-size: 0.92rem; font-weight: 500; line-height: 1.45;">
+Planes deterministas desde el AST en Rust. Sin IA, y nunca reescribe tu código.
+</div>
+</div>
+
+---
+layout: statement
+---
+
+# No te dice que tu código es malo.
+
+<div class="title-tick" style="margin: 16px auto 24px;"></div>
+
+<div style="color: var(--text-secondary); font-size: 1.05rem;">
+Te dice dónde mirar primero.
+</div>
+
+---
+layout: default
+---
+
+# Seguimiento en el tiempo
+
+<div class="mt-2 mb-5 text-sm" style="color: var(--text-muted);">
+Adopta complexipy en un proyecto grande sin tener que arreglarlo todo hoy
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px;">
+
+<div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 12px 16px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.82rem; margin-bottom: 3px;">Snapshot, <code style="color: var(--accent-blue);">--snapshot-create</code></div>
+<div style="color: var(--text-muted); font-size: 0.74rem; line-height: 1.45;">Congela la deuda actual como línea base. Solo falla si algo nuevo la supera.</div>
+</div>
+
+<div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 12px 16px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.82rem; margin-bottom: 3px;">Diff, <code style="color: var(--accent-blue);">--diff main</code></div>
+<div style="color: var(--text-muted); font-size: 0.74rem; line-height: 1.45;">Compara contra cualquier referencia de git y muestra qué mejoró y qué empeoró.</div>
+</div>
+
+<div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 12px 16px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.82rem; margin-bottom: 3px;">Ratchet, <code style="color: var(--accent-blue);">--diff main --ratchet</code></div>
+<div style="color: var(--text-muted); font-size: 0.74rem; line-height: 1.45;">Sobre el diff, solo falla si una función cruza el umbral o empeora estando por encima.</div>
+</div>
+
+</div>
+
+<pre v-click style="background: var(--bg-code); border: 1px solid var(--border-dark); border-radius: 8px; padding: 12px 18px; font-family: var(--slidev-font-mono), monospace; font-size: 0.72rem; line-height: 1.6; color: var(--text-secondary); overflow-x: auto;"><span style="color: var(--text-muted);">Complexity diff  (vs HEAD~1)</span>
+<span style="color: var(--text-very-muted);">────────────────────────────────────────────────────────</span>
+  <span style="color: var(--accent-red);">REGRESSED</span>   api.py::handle_request     12 → 19  (+7)
+  <span style="color: var(--accent-green);">IMPROVED</span>    utils.py::flatten_tree     22 → 14  (-8)
+  NEW         auth.py::validate_token    17  (new)
+<span style="color: var(--text-very-muted);">────────────────────────────────────────────────────────</span>
+<span style="color: var(--text-muted);">Net: 1 regressed, 1 improved, 1 new</span></pre>
+
+---
+layout: default
+---
+
+# Se conecta donde ya trabajas
+
+<div class="mt-2 mb-5 text-sm" style="color: var(--text-muted);">
+La misma medición, en el editor, en el commit y en el pull request
+</div>
+
+<div style="display: flex; gap: 18px;">
+
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 9px;">
+
+<div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 11px 15px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.8rem;">Pre-commit</div>
+<div style="color: var(--text-muted); font-size: 0.73rem; line-height: 1.4;">Bloquea el commit antes de que la complejidad llegue al repo.</div>
+</div>
+
+<div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 11px 15px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.8rem;">VS Code</div>
+<div style="color: var(--text-muted); font-size: 0.73rem; line-height: 1.4;">Indicadores de complejidad en tiempo real mientras escribes.</div>
+</div>
+
+<div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 8px; padding: 11px 15px;">
+<div style="color: var(--text-primary); font-weight: 700; font-size: 0.8rem;">SARIF, GitLab</div>
+<div style="color: var(--text-muted); font-size: 0.73rem; line-height: 1.4;">Anotaciones inline en el PR, vía Code Scanning o Code Quality.</div>
+</div>
+
+</div>
+
+<div style="flex: 1; min-width: 0;">
+
+```yaml
+# GitHub Actions
+- uses: rohaquinlop/complexipy-action@v2
+  with:
+    paths: .
+    max_complexity_allowed: 10
+    output_format: json
+```
+
+<div style="color: var(--text-very-muted); font-size: 0.7rem; margin-top: 10px; line-height: 1.5;">
+Formatos de salida: <code style="color: var(--accent-blue);">csv</code>, <code style="color: var(--accent-blue);">json</code>, <code style="color: var(--accent-blue);">gitlab</code>, <code style="color: var(--accent-blue);">sarif</code>.
+</div>
+
+</div>
+
+</div>
+
+---
+layout: default
+---
+
+# La API de Python
+
+<div class="mt-2 mb-5 text-sm" style="color: var(--text-muted);">
+El mismo motor en Rust, desde tu propio código
+</div>
+
+```python
+from complexipy import code_complexity, file_complexity
+
+result = file_complexity("app.py")
+print(result.complexity)              # score total del archivo
+
+for fn in result.functions:
+    print(fn.name, fn.complexity)     # score por función
+    for plan in fn.refactor_plans:    # planes de refactor
+        print(plan.title)
+```
+
+<div v-click class="mt-5" style="border-left: 3px solid var(--accent-teal); padding-left: 14px;">
+<div style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.5;">
+Devuelve objetos con el detalle línea por línea, ideal para construir tus propios linters, dashboards o reglas a medida.
+</div>
+</div>
+
+---
+layout: statement
+---
+
+# Volvamos dos años atrás.
+
+<div class="title-tick" style="margin: 16px auto 24px;"></div>
+
+<div style="color: var(--text-secondary); font-size: 1.05rem;">
+Marzo de 2024, la primera vez que hablé de complexipy aquí.
+</div>
+
+---
+layout: default
+---
+
+# El mismo proyecto, dos años después
+
+<div class="mt-2 mb-3 text-sm" style="color: var(--text-muted);">
+Descargas semanales en PyPI, desde aquella primera charla hasta hoy
+</div>
+
+<DownloadsChart />
+
+<div class="mt-3" style="display: flex; justify-content: center; gap: 40px;">
+<div style="text-align: center;">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 600; color: var(--accent-teal);">21×</div>
+<div style="color: var(--text-muted); font-size: 0.72rem;">más descargas por semana</div>
+</div>
+<div style="text-align: center;">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 600; color: var(--text-primary);">2.83M</div>
+<div style="color: var(--text-muted); font-size: 0.72rem;">descargas acumuladas</div>
+</div>
+<div style="text-align: center;">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 600; color: var(--text-primary);">122k</div>
+<div style="color: var(--text-muted); font-size: 0.72rem;">por semana hoy</div>
+</div>
+</div>
