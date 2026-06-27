@@ -542,7 +542,7 @@ def process(items):
 <CogCVersus
   :a="11" :b="5" mode="vs"
   labelA="anidado" labelB="lineal"
-  note="Cinco caminos en ambos casos. El anidamiento multiplica el costo: 11 contra 5."
+  note="Cinco caminos en ambos casos. Cada nivel de anidación añade un recargo, y se acumulan: 11 contra 5."
 />
 </div>
 
