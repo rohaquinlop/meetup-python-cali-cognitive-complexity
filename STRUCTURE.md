@@ -30,28 +30,36 @@
 | 13 | Misma lógica. (6 → 4) | ✅ DONE | Breathing statement slide (statement layout). Hero `<CogCVersus :a="6" :b="4" big>` device with the `−33%` pill, plus the `title-tick` brand mark. The signature visual moment of the deck. |
 | 14 | Decoradores Python, La excepción especial | ✅ DONE | **Paper integration.** Campbell Appendix A quote about decorator pattern. Code example showing `complexipy` ignores the outer function, sets inner nesting to 0. v-click takeaway: "El decorador es patrón estructural, no lógica." |
 | 15 | Decorador, una excepción estrecha | ✅ DONE | **Paper integration.** Side-by-side, same wrapper logic: no califica (un statement extra hace que la función anidada suba el nivel, CogC=2) vs califica como decorador (CogC=1). Mirrors the paper's `a_decorator`/`not_a_decorator` examples (Apéndice A). Both values verified on complexipy 5.6.1. |
-| 16 | ~~Introduciendo complexipy~~ | ❌ TODO | *(Planned: Tool intro — not yet created)* |
-| 17 | ~~complexipy — Uso básico~~ | ❌ TODO | *(Planned: CLI usage — not yet created)* |
-| 18 | ~~Detección en código real (1)~~ | ❌ TODO | *(Planned: Show high-CC code with Monaco — not yet created)* |
-| 19 | ~~Detección en código real (2)~~ | ❌ TODO | *(Planned: Problem analysis — not yet created)* |
-| 20 | ~~Refactoring en acción~~ | ❌ TODO | *(Planned: Section intro — not yet created)* |
-| 21 | ~~Ejemplo 1: Condicionales anidados~~ | ❌ TODO | *(Planned: Magic Move animation — not yet created)* |
-| 22 | ~~Ejemplo 2: Loop con lógica compleja~~ | ❌ TODO | *(Planned: Magic Move animation — not yet created)* |
-| 23 | ~~Ejemplo 3: Expresiones booleanas complejas~~ | ❌ TODO | *(Planned: Magic Move animation — not yet created)* |
-| 24 | ~~Ejemplo 4: Match/Case con lógica anidada~~ | ❌ TODO | *(Planned: Magic Move animation — not yet created)* |
-| 25 | ~~Resumen de los 4 ejemplos~~ | ❌ TODO | *(Planned: Stats cards — not yet created)* |
-| 26 | ~~Buenas Prácticas~~ | ❌ TODO | *(Planned: Patterns for reducing CC — not yet created)* |
-| 27 | ~~Integración con CI/CD~~ | ❌ TODO | *(Planned: GitHub Actions example — not yet created)* |
-| 28 | ~~¿Qué más ofrece complexipy?~~ | ❌ TODO | *(Planned: Feature list + links — not yet created)* |
-| 29 | ~~Resumen~~ | ❌ TODO | *(Planned: Key takeaways — not yet created)* |
+| 16 | Ya sabemos qué medir. | ✅ DONE | Breathing statement. Bridge from the algorithm to the tool: "¿cómo lo medimos sin contar a mano?" `title-tick`. |
+| 17 | complexipy | ✅ DONE | **Tool intro.** Default layout. Subtitle "análisis de complejidad cognitiva para Python, escrito en Rust". Three teal-dot points (implementa el paper de Campbell, motor en Rust, score por función listo para CI). Install code block (`pip install` / `uv add`). No closer (install lands it). |
+| 18 | Uso básico | ✅ DONE | **CLI usage.** Recreated terminal (`bg-code` `<pre>`, no emojis): `complexipy .` → `is_valid 1 PASSED`, `process_orders 9 PASSED` (real output, verified on complexipy 6.0.0). Teal pull-quote closer. |
+| 19 | El umbral, tu compuerta en CI | ✅ DONE | **CI gate.** `--max-complexity-allowed 5` → `process_orders 9 FAILED` (red), `Failed functions`, `echo $?` → `1`. Default threshold 15. White-text closer about `exit 1` stopping the pipeline. |
+| 20 | No solo el número, también el plan | ✅ DONE | **Refactor plans.** `--suggest-refactors -mx 5` → real deterministic plan output (Extract helper 9→3, Flatten guard clauses 9→7). Closer: "Planes deterministas desde el AST en Rust. Sin IA, y nunca reescribe tu código." |
+| 21 | No te dice que tu código es malo. | ✅ DONE | Breathing statement. "Te dice dónde mirar primero." `title-tick`. |
+| 22 | Seguimiento en el tiempo | ✅ DONE | **Tracking.** Vertical list (no grid): Snapshot (`--snapshot-create`), Diff (`--diff main`), Ratchet (`--ratchet`). v-click reveals a recreated diff sample (REGRESSED red / IMPROVED green / NEW). |
+| 23 | Se conecta donde ya trabajas | ✅ DONE | **Integrations.** Two-column: left list (Pre-commit, VS Code, SARIF/GitLab) + right GitHub Action YAML (`complexipy-action@v2`) and output formats (csv/json/gitlab/sarif). |
+| 24 | La API de Python | ✅ DONE | **Python API.** `code_complexity` / `file_complexity`, iterate `result.functions`, `fn.refactor_plans`. Teal pull-quote: build your own linters/dashboards. |
+| 25 | ~~Buenas prácticas~~ | ❌ TODO | *(Planned: patterns for reducing CC — not yet created)* |
+| 26 | ~~Refactoring en acción (Magic Move)~~ | ❌ TODO | *(Planned: progressive refactor animations, the talk's key demo — not yet created)* |
+| 27 | ~~Resumen~~ | ❌ TODO | *(Planned: key takeaways — not yet created)* |
+| 28 | Volvamos dos años atrás. | ✅ DONE | Breathing statement. Bridge into the closing growth story: "Marzo de 2024, la primera vez que hablé de complexipy aquí." `title-tick`. |
+| 29 | El mismo proyecto, dos años después | ✅ DONE | **Back to the past (closing crescendo).** `<DownloadsChart>` (custom SVG, 123 weekly PyPI points) annotated Marzo 2024 (5.8k/sem) → Junio 2026 (122k/sem). Stat trio: 21×, 2.83M acumuladas, 122k/sem. |
 | 30 | ~~¡Gracias!~~ | ❌ TODO | *(Planned: Q&A + links — not yet created)* |
+
+> **Ordering note:** the two growth-story slides (28-29) currently sit **physically last** in `slides.md`. They are intentionally the closing crescendo, right before Gracias. When the remaining technical TODO slides (buenas prácticas, refactoring Magic Move, resumen) are built, **insert them BEFORE the "Volvamos dos años atrás" statement**, not after it. Gracias goes after the growth chart.
 
 ## Summary
 
-- **Done:** 15 / 30 slides
-- **Remaining:** 15 slides
-- **Progress:** 50%
-- **Current coverage:** Title → Concept → Ignorar atajos → CogC vs CC demo → Why it matters → Rules → 4 types of increment → Boolean sequences → Why switch is cheaper → Why penalize nesting → Formula in action → Breathing statement → Decorator exception
+- **Done:** 26 / 30 slides
+- **Remaining:** 4 slides (buenas prácticas, refactor Magic Move, resumen, gracias)
+- **Progress:** 87%
+- **Current coverage:** Title → Concept → Ignorar atajos → CogC vs CC demo → Why it matters → Rules → 4 types of increment → Boolean sequences → Why switch is cheaper → Why penalize nesting → Formula in action → Breathing statement → Decorator exception → **Tool: intro + install → CLI basics → CI gate → refactor plans → tracking (snapshot/diff/ratchet) → integrations → Python API → "back to the past" downloads growth**
+
+## complexipy facts (verified, v6.0.0)
+
+- `process_orders` example (nested `if`/`elif` + boolean) = **9**; `is_valid` (`and`) = **1**. Boolean `a and b or c` = **3**. All verified by running `complexipy` 6.0.0.
+- v6.0.0 brought the algorithm into **full SonarSource white-paper (v1.7) conformance** (the user's fix): `match` now `1 + nesting`, `except` now `1 + nesting`, `with`/`try`/`finally` no longer over-nest, direct recursion `+1`, comprehensions/lambdas/nested-ternaries counted. The deck's paper-aligned scores match this release.
+- Download data: `complexipy-downloads-overtime.csv`, 123 weekly PyPI points (2024-02-11 → 2026-06-14), embedded in `components/DownloadsChart.vue`. Anchor week of the March 2024 talk = 2024-03-17 (5,814/wk). Total downloads = **2,826,553** (authoritative ClickHouse count; the weekly-CSV sum of 2,756,717 runs ~70k low, so the slide shows 2.83M).
 
 ## Structural Notes
 
