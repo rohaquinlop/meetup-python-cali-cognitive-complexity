@@ -79,7 +79,7 @@ No cards, no code, no grids. Let the audience absorb.
 ### Content Rules
 
 - **Spanish:** No em dashes (`—`), no double hyphens (`--`). Use commas (`,`) for all separators in prose.
-- **No emojis** in slides. Use GIFs for visual elements.
+- **No emojis** in slides. Use GIFs for visual elements. **Exception:** faithful recreations of `complexipy` CLI output keep the tool's real emoji (`🐙` banner, `✅`/`❌` row markers, `🎉` footer) so the slide matches exactly what attendees see when they run it. Do not strip these.
 - **Author attribution:** G. Ann Campbell, SonarSource (2017). Must be credited on the cognitive complexity definition slide.
 - **Cognitive complexity scores:** ALWAYS validate against the actual `complexipy` Rust source before claiming any score. Run `uv run complexipy` on the example code and confirm the output.
 
