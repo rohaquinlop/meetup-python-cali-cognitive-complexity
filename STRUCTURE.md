@@ -39,21 +39,24 @@
 | 22 | Seguimiento en el tiempo | ✅ DONE | **Tracking.** Vertical list (no grid): Snapshot (`--snapshot-create`), Diff (`--diff main`), Ratchet (`--ratchet`). v-click reveals a recreated diff sample (REGRESSED red / IMPROVED green / NEW). |
 | 23 | Se conecta donde ya trabajas | ✅ DONE | **Integrations.** Two-column: left list (Pre-commit, VS Code, SARIF/GitLab) + right GitHub Action YAML (`complexipy-action@v2`) and output formats (csv/json/gitlab/sarif). |
 | 24 | La API de Python | ✅ DONE | **Python API.** `code_complexity` / `file_complexity`, iterate `result.functions`, `fn.refactor_plans`. Teal pull-quote: build your own linters/dashboards. |
-| 25 | ~~Buenas prácticas~~ | ❌ TODO | *(Planned: patterns for reducing CC — not yet created)* |
-| 26 | ~~Refactoring en acción (Magic Move)~~ | ❌ TODO | *(Planned: progressive refactor animations, the talk's key demo — not yet created)* |
-| 27 | ~~Resumen~~ | ❌ TODO | *(Planned: key takeaways — not yet created)* |
+| 25 | Buenas prácticas | ✅ DONE | Default layout. Vertical list (no grid) of the four patterns that move the number: guard clauses, comprehensions, `any()`/`all()` vs bandera+break, extraer funciones con nombre. Teal pull-quote closer (the Example D gotcha): renombrar mejora la lectura, pero la gran reducción viene de quitar anidación. |
+| 26 | Refactoring en acción. | ✅ DONE | Breathing statement / section divider. "El mismo comportamiento, mucha menos carga cognitiva." `title-tick`. Heads the talk's key Magic Move demo trio (26a-c). |
+| 26a | Condicionales anidados a guard clauses | ✅ DONE | **Key demo.** Magic Move `get_discount` Antes→Después, `<CogCVersus :a="11" :b="4" mode="arrow">`. Verified 11→4 on complexipy 6.0.0. |
+| 26b | Acumulación anidada a comprehension | ✅ DONE | **Key demo.** Magic Move `active_premium_emails`, `<CogCVersus :a="10" :b="3" mode="arrow">`. Verified 10→3 on complexipy 6.0.0. |
+| 26c | Bandera y break a any() | ✅ DONE | **Key demo.** Magic Move `has_expired_item`, `<CogCVersus :a="6" :b="2" mode="arrow">`. Verified 6→2 on complexipy 6.0.0. |
+| 27 | Resumen | ✅ DONE | Default layout. Four numbered takeaways (teal `01-04` badges, white key terms): mide entendimiento, anidación es lo que más pesa, complexipy lo mide por ti, refactoriza para quitar anidación. White typographic closer: "Código simple no es código corto, es código que se entiende a la primera." |
 | 28 | Volvamos dos años atrás. | ✅ DONE | Breathing statement. Bridge into the closing growth story: "Marzo de 2024, la primera vez que hablé de complexipy aquí." `title-tick`. |
 | 29 | El mismo proyecto, dos años después | ✅ DONE | **Back to the past (closing crescendo).** `<DownloadsChart>` (custom SVG, 123 weekly PyPI points) annotated Marzo 2024 (5.8k/sem) → Junio 2026 (122k/sem). Stat trio: 21×, 2.83M acumuladas, 122k/sem. |
-| 30 | ~~¡Gracias!~~ | ❌ TODO | *(Planned: Q&A + links — not yet created)* |
+| 30 | ~~¡Gracias!~~ | ❌ TODO | *(Planned: Q&A + links — goes AFTER the growth chart, still not created)* |
 
 > **Ordering note:** the two growth-story slides (28-29) currently sit **physically last** in `slides.md`. They are intentionally the closing crescendo, right before Gracias. When the remaining technical TODO slides (buenas prácticas, refactoring Magic Move, resumen) are built, **insert them BEFORE the "Volvamos dos años atrás" statement**, not after it. Gracias goes after the growth chart.
 
 ## Summary
 
-- **Done:** 26 / 30 slides
-- **Remaining:** 4 slides (buenas prácticas, refactor Magic Move, resumen, gracias)
-- **Progress:** 87%
-- **Current coverage:** Title → Concept → Ignorar atajos → CogC vs CC demo → Why it matters → Rules → 4 types of increment → Boolean sequences → Why switch is cheaper → Why penalize nesting → Formula in action → Breathing statement → Decorator exception → **Tool: intro + install → CLI basics → CI gate → refactor plans → tracking (snapshot/diff/ratchet) → integrations → Python API → "back to the past" downloads growth**
+- **Done:** 31 / 32 slides (the only remaining TODO is Gracias)
+- **Remaining:** 1 slide (gracias)
+- **Progress:** 97%
+- **Current coverage:** Title → Concept → Ignorar atajos → CogC vs CC demo → Why it matters → Rules → 4 types of increment → Boolean sequences → Why switch is cheaper → Why penalize nesting → Formula in action → Breathing statement → Decorator exception → **Tool: intro + install → CLI basics → CI gate → refactor plans → tracking (snapshot/diff/ratchet) → integrations → Python API → buenas prácticas → refactoring en acción (Magic Move trio: 11→4, 10→3, 6→2) → resumen → "back to the past" downloads growth**
 
 ## complexipy facts (verified, v6.0.0)
 
